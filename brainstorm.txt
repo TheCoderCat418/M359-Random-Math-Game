@@ -1,0 +1,14 @@
+Person:
+    String getName()
+    int getScore()
+    void modifyScore(int change)
+    int getLevelOfAchievement()
+    int getHighScore()
+
+Question:
+    String getOperation()
+
+
+
+
+    
