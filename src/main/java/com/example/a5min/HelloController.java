@@ -22,18 +22,48 @@ public class HelloController {
     public Button start;
     public Button multiplication;
     public TextField answer;
+    public Label questionLabel;
 
     private boolean singlePlayer = true;
     private int dificulty = 1;
     private int operation = 1;
+    private Person p1;
+    private Person p2;
+    private int questionNum = 1;
+    private Question currentQuestion;
 
     @FXML
     protected void onGameStart(){
+        lockAll();
         if(!name2.getText().isBlank()){
             singlePlayer = false;
         }
+        p1 = new Person(name1.getText());
+        p2 = new Person(name2.getText());
+        displayQuestion();
 
 
+
+
+
+    }
+
+    protected void displayQuestion(){
+        currentQuestion = new Question(operation, dificulty);
+        Person currentPlayer = p1;
+        if(!singlePlayer){
+            if(questionNum%2==1){
+                currentPlayer=p2;
+            }
+        }
+        questionLabel.setText(currentPlayer.getName()+", what is ["+currentQuestion.questionString()+"] ?");
+    }
+    @FXML
+    protected void handleAnwser(){
+        questionNum++;
+        if(answer.getText().equals(Integer.toString(currentQuestion.getAnswer()))){
+            
+        }
     }
     @FXML
     protected void updateDificulty(ActionEvent ae){
@@ -68,6 +98,23 @@ public class HelloController {
             minus.setDisable(true);
         }
     }
+
+    protected void lockAll(){
+        name1.setDisable(true);
+        name2.setDisable(true);
+        rounds.setDisable(true);
+        d1.setDisable(true);
+        d2.setDisable(true);
+        d3.setDisable(true);
+        plus.setDisable(true);
+        minus.setDisable(true);
+        multiplication.setDisable(true);
+        division.setDisable(true);
+        range1.setDisable(true);
+        range2.setDisable(true);
+        start.setDisable(true);
+    }
+
 
     private Question generateQuestion(int rangeMin, int rangeMax, int operation){
         return null;

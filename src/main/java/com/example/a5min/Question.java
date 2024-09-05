@@ -5,7 +5,18 @@ public class Question {
     private String randomNumbers;
     private int answer;
 
-    public Question(int operation, int randomMin, int randomMax){
+    public Question(int operation, int dificulty){
+        int randomMin, randomMax;
+        if(dificulty == 1){
+            randomMin = 0;
+            randomMax = 10;
+        }else if(dificulty == 2){
+            randomMin = 10;
+            randomMax = 100;
+        }else{
+            randomMin = 100;
+            randomMax = 500;
+        }
         this.operation = operation;
         this.randomNumbers = assembleRandomNumbers(randomMin, randomMax);
         this.answer = processAnswer();
@@ -35,5 +46,14 @@ public class Question {
     }
     public String getRandomNumbers(){
         return randomNumbers;
+    }
+
+    public String questionString(){
+        String[] rns = randomNumbers.split(",");
+        String op = " ERROR ";
+        if(operation == 1){
+            op=" + ";
+        }
+        return rns[0]+op+rns[1];
     }
 }
