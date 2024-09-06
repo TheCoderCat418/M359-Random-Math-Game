@@ -24,5 +24,9 @@
       <Button fx:id="start" layoutX="486.0" layoutY="40.0" mnemonicParsing="false" onAction="#onGameStart" prefHeight="25.0" prefWidth="100.0" text="Start" />
       <TextField fx:id="answer" layoutX="403.0" layoutY="188.0" prefHeight="25.0" prefWidth="100.0" promptText="Answer Here" />
       <Label fx:id="questionLabel" alignment="CENTER_RIGHT" layoutX="125.0" layoutY="192.0" prefHeight="17.0" prefWidth="262.0" text="Label" />
+      <Button fx:id="submit" layoutX="510.0" layoutY="188.0" mnemonicParsing="false" onAction="#handleAnwser" text="Submit" />
+      <Label fx:id="p1points" layoutX="32.0" layoutY="108.0" text="Label" />
+      <Label fx:id="p2points" layoutX="32.0" layoutY="142.0" text="Label" />
+      <Label fx:id="toast" layoutX="355.0" layoutY="232.0" prefHeight="17.0" prefWidth="198.0" text="Label" />
    </children>
 </AnchorPane>

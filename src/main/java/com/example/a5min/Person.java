@@ -14,4 +14,13 @@ public class Person {
     public String getName(){
         return name;
     }
+
+    public void modifyScore(int amount){
+        score += amount;
+    }
+
+    public int getScore(){
+        return score;
+    }
+
 }

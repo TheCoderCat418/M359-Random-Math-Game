@@ -23,6 +23,10 @@ public class HelloController {
     public Button multiplication;
     public TextField answer;
     public Label questionLabel;
+    public Label p1points;
+    public Label p2points;
+    public Label toast;
+    public Button submit;
 
     private boolean singlePlayer = true;
     private int dificulty = 1;
@@ -34,37 +38,63 @@ public class HelloController {
 
     @FXML
     protected void onGameStart(){
+        singlePlayer = true;
         lockAll();
         if(!name2.getText().isBlank()){
             singlePlayer = false;
         }
         p1 = new Person(name1.getText());
         p2 = new Person(name2.getText());
+        updateScores();
+        questionNum = 1;
         displayQuestion();
-
-
-
-
-
     }
 
     protected void displayQuestion(){
+        if(questionNum==11){
+            endGame();
+            return;
+        }
         currentQuestion = new Question(operation, dificulty);
         Person currentPlayer = p1;
         if(!singlePlayer){
-            if(questionNum%2==1){
+            if(questionNum%2==0){
                 currentPlayer=p2;
             }
         }
         questionLabel.setText(currentPlayer.getName()+", what is ["+currentQuestion.questionString()+"] ?");
     }
+
     @FXML
     protected void handleAnwser(){
-        questionNum++;
-        if(answer.getText().equals(Integer.toString(currentQuestion.getAnswer()))){
-            
+        if(currentQuestion.isCorrect(Integer.parseInt(answer.getText()))){
+            if(!singlePlayer){
+                if(questionNum%2==0){
+                    p2.modifyScore(1);
+                }else {
+                    p1.modifyScore(1);
+                }
+            }else {
+                p1.modifyScore(1);
+            }
+            updateScores();
+            toast.setText("Correct!");
+        }else{
+            toast.setText("Incorrect! The anwser was " + currentQuestion.getAnswer() + ".");
         }
+        questionNum++;
+        displayQuestion();
     }
+
+    protected void updateScores(){
+        if(!singlePlayer){
+            p2points.setText(p2.getName()+"'s Score: "+Integer.toString(p2.getScore()));
+        }else{
+            p2points.setText("Single player mode");
+        }
+        p1points.setText(p1.getName()+"'s Score: "+Integer.toString(p1.getScore()));
+    }
+
     @FXML
     protected void updateDificulty(ActionEvent ae){
         Button pushed = (Button) ae.getSource();
@@ -85,6 +115,7 @@ public class HelloController {
             d3.setDisable(true);
         }
     }
+
     @FXML
     private void updateOperation(ActionEvent ae){
         Button pushed = (Button) ae.getSource();
@@ -113,10 +144,33 @@ public class HelloController {
         range1.setDisable(true);
         range2.setDisable(true);
         start.setDisable(true);
+        submit.setDisable(false);
     }
 
+    protected void unlockAll(){
+        name1.setDisable(false);
+        name2.setDisable(false);
+        rounds.setDisable(false);
+        d1.setDisable(false);
+        d2.setDisable(false);
+        d3.setDisable(false);
+        plus.setDisable(false);
+        minus.setDisable(false);
+        multiplication.setDisable(false);
+        division.setDisable(false);
+        range1.setDisable(false);
+        range2.setDisable(false);
+        start.setDisable(false);
+        submit.setDisable(true);
+    }
 
-    private Question generateQuestion(int rangeMin, int rangeMax, int operation){
-        return null;
+    protected void endGame(){
+        if(p1.getScore()> p2.getScore()){
+            questionLabel.setText("All done! The winner is " + p1.getName());
+        }else{
+            questionLabel.setText("All done! The winner is " + p2.getName());
+        }
+
+        unlockAll();
     }
 }

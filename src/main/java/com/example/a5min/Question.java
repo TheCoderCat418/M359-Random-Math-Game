@@ -21,6 +21,7 @@ public class Question {
         this.randomNumbers = assembleRandomNumbers(randomMin, randomMax);
         this.answer = processAnswer();
     }
+
     private int processAnswer(){
         String[] rns = randomNumbers.split(",");
         int num1 = Integer.parseInt(rns[0]);
@@ -31,6 +32,7 @@ public class Question {
         }
         throw new RuntimeException("Invalid Operation");
     }
+
     private String assembleRandomNumbers(int min, int max){
         int number1 = min+(int)(Math.random() * ((max - min) + 1));
         int number2 = min+(int)(Math.random() * ((max - min) + 1));
@@ -38,12 +40,18 @@ public class Question {
         return number1+","+number2;
     }
 
+    public boolean isCorrect(int playerAnwser){
+        return playerAnwser == answer;
+    }
+
     public int getOperation() {
         return operation;
     }
+
     public int getAnswer(){
         return answer;
     }
+
     public String getRandomNumbers(){
         return randomNumbers;
     }
