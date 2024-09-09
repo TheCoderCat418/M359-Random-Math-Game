@@ -28,5 +28,10 @@
       <Label fx:id="p1points" layoutX="32.0" layoutY="108.0" text="Label" />
       <Label fx:id="p2points" layoutX="32.0" layoutY="142.0" text="Label" />
       <Label fx:id="toast" layoutX="355.0" layoutY="232.0" prefHeight="17.0" prefWidth="198.0" text="Label" />
+      <Label fx:id="inarow10" layoutX="82.0" layoutY="108.0" text="10 in a row!" />
+      <Label fx:id="inarow15" layoutX="152.0" layoutY="108.0" text="15 in a row!" />
+      <Label fx:id="inarow20" layoutX="225.0" layoutY="108.0" text="UNSTOPPABLE!" />
+      <Label fx:id="all5" layoutX="314.0" layoutY="108.0" text="Well rounded!" />
+      <Label fx:id="alldone" layoutX="400.0" layoutY="108.0" text="A+!!!" />
    </children>
 </AnchorPane>

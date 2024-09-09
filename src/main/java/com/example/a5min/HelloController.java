@@ -27,6 +27,11 @@ public class HelloController {
     public Label p2points;
     public Label toast;
     public Button submit;
+    public Label inarow15;
+    public Label inarow10;
+    public Label inarow20;
+    public Label all5;
+    public Label alldone;
 
     private boolean singlePlayer = true;
     private int dificulty = 1;
@@ -35,6 +40,7 @@ public class HelloController {
     private Person p2;
     private int questionNum = 1;
     private Question currentQuestion;
+    private int numOfRounds = 10;
 
     @FXML
     protected void onGameStart(){
@@ -51,7 +57,7 @@ public class HelloController {
     }
 
     protected void displayQuestion(){
-        if(questionNum==11){
+        if(questionNum==numOfRounds+1){
             endGame();
             return;
         }
@@ -172,5 +178,41 @@ public class HelloController {
         }
 
         unlockAll();
+    }
+
+    protected void checkForBadges(Person p){
+        for(int i = 0; i<2;i++){
+            if(p.getStreak() >= 20) {
+                giveBadge(3);
+            }
+            if(p.getStreak() >= 15) {
+                giveBadge(2);
+            }
+            if(p.getStreak() >= 5){
+                giveBadge(1);
+            }
+            if(p.getAdditionQuestionsCorrect() >= 5 && p.getMultiplicationQuestionsCorrect() >= 5 && p.getSubtractionQuestionsCorrect() >= 5 && p.getDivisonQuestionsCorrect() >= 5){
+                giveBadge(4);
+            }
+            if(p.getScore() == numOfRounds){
+                giveBadge(5);
+            }
+
+        }
+
+    }
+    protected void giveBadge(int badgeId){
+        switch (badgeId){
+            case 1:
+                inarow10.setVisible(true);
+            case 2:
+                inarow15.setVisible(true);
+            case 3:
+                inarow20.setVisible(true);
+            case 4:
+                all5.setVisible(true);
+            case 5:
+                alldone.setVisible(true);
+        }
     }
 }
