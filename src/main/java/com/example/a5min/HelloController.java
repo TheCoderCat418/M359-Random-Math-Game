@@ -50,6 +50,7 @@ public class HelloController {
     private int questionNum = 1;
     private Question currentQuestion;
     private int numOfRounds = 20;
+    private boolean started = false;
 
     @FXML
     protected void onGameStart(){
@@ -60,6 +61,10 @@ public class HelloController {
         }
         p1 = new Person(name1.getText());
         p2 = new Person(name2.getText());
+        if(started){
+            p1 = new Person(name1.getText());
+            p2 = new Person(name2.getText());
+        }
         updateScores();
         questionNum = 1;
         displayQuestion();

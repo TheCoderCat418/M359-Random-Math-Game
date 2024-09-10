@@ -17,6 +17,11 @@ public class Person {
         this.name = name;
     }
 
+    public Person(String name, int highScore) {
+        this.name = name;
+        this.highScore = highScore;
+    }
+
     public String getName(){
         return name;
     }
