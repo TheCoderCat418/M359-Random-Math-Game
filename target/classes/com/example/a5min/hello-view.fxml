@@ -3,8 +3,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.a5min.HelloController">
@@ -28,13 +26,19 @@
       <Label fx:id="questionLabel" alignment="CENTER_RIGHT" layoutX="125.0" layoutY="192.0" prefHeight="17.0" prefWidth="262.0" text="Label" />
       <Button fx:id="submit" layoutX="510.0" layoutY="188.0" mnemonicParsing="false" onAction="#handleAnwser" text="Submit" />
       <Label fx:id="p1points" layoutX="32.0" layoutY="108.0" text="Label" />
-      <Label fx:id="p2points" layoutX="32.0" layoutY="142.0" text="Label" />
+      <Label fx:id="p2points" layoutX="32.0" layoutY="184.0" text="Label" />
       <Label fx:id="toast" layoutX="355.0" layoutY="232.0" prefHeight="17.0" prefWidth="198.0" text="Label" />
-      <Label fx:id="addmaster" layoutX="82.0" layoutY="108.0" text="Addition Master!" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="82.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="src/main/resources/com/example/a5min/pics/brightspotcdn.jpg" />
-         </image>
-      </ImageView>
+      <Label fx:id="inarow10" layoutX="173.0" layoutY="108.0" text="10 in a row!" visible="false" />
+      <Label fx:id="inarow15" layoutX="243.0" layoutY="108.0" text="15 in a row!" visible="false" />
+      <Label fx:id="inarow20" layoutX="316.0" layoutY="108.0" text="UNSTOPPABLE!" visible="false" />
+      <Label fx:id="all5p2" layoutX="408.0" layoutY="142.0" text="Well rounded!" visible="false" />
+      <Label fx:id="alldone" layoutX="491.0" layoutY="108.0" text="A+!!!" visible="false" />
+      <Label fx:id="inarow10p2" layoutX="170.0" layoutY="142.0" text="10 in a row!" visible="false" />
+      <Label fx:id="inarow15p2" layoutX="243.0" layoutY="142.0" text="15 in a row!" visible="false" />
+      <Label fx:id="inarow20p2" layoutX="316.0" layoutY="142.0" text="UNSTOPPABLE!" visible="false" />
+      <Label fx:id="all5" layoutX="408.0" layoutY="108.0" text="Well rounded!" visible="false" />
+      <Label fx:id="alldonep2" layoutX="490.0" layoutY="142.0" text="A+!!!" visible="false" />
+      <Label fx:id="hsp1" layoutX="32.0" layoutY="134.0" text="Label" />
+      <Label fx:id="hsp2" layoutX="32.0" layoutY="213.0" text="Label" />
    </children>
 </AnchorPane>

@@ -1,21 +1,30 @@
 package com.example.a5min;
 
 public class Question {
-    private int operation;
+    private String operation;
     private String randomNumbers;
     private int answer;
 
-    public Question(int operation, int dificulty){
+    public Question(String operation, int dificulty, boolean negitive){
         int randomMin, randomMax;
         if(dificulty == 1){
             randomMin = 0;
             randomMax = 10;
+            if(negitive){
+                randomMin = -10;
+            }
         }else if(dificulty == 2){
             randomMin = 10;
             randomMax = 100;
+            if(negitive){
+                randomMin = -50;
+            }
         }else{
             randomMin = 100;
             randomMax = 500;
+            if(negitive){
+                randomMin = -250;
+            }
         }
         this.operation = operation;
         this.randomNumbers = assembleRandomNumbers(randomMin, randomMax);
@@ -27,8 +36,29 @@ public class Question {
         int num1 = Integer.parseInt(rns[0]);
         int num2 = Integer.parseInt(rns[1]);
 
-        if(operation == 1){
-            return num1 + num2;
+        int op = operation.length();
+        op = (int)(Math.random() * op)+1;
+        if(op == 1){
+            return eval(num1, num2, operation.charAt(0));
+        }else if(op == 2){
+            return eval(num1, num2, operation.charAt(1));
+        }else if(op == 3){
+            return eval(num1, num2, operation.charAt(2));
+        }else if(op == 4){
+            return eval(num1, num2, operation.charAt(3));
+        }
+        throw new RuntimeException("Invalid Operation");
+    }
+
+    private int eval(int num1, int num2, char operaton){
+        if(operaton == '+'){
+            return num1 = num2;
+        }else if(operaton == '-'){
+            return num1 - num2;
+        }else if(operaton == '*'){
+            return num1 * num2;
+        }else if(operaton == '/'){
+            return num1 / num2;
         }
         throw new RuntimeException("Invalid Operation");
     }

@@ -23,6 +23,9 @@ public class Person {
 
     public void modifyScore(int amount){
         totalScore += amount;
+        if(totalScore > highScore){
+            highScore = totalScore;
+        }
     }
 
     public int getScore(){

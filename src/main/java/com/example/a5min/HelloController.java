@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 
 public class HelloController {
 
@@ -16,11 +17,11 @@ public class HelloController {
     public Button d3;
     public TextField range1;
     public TextField range2;
-    public Button plus;
-    public Button minus;
-    public Button division;
+    public ToggleButton plus;
+    public ToggleButton minus;
+    public ToggleButton division;
     public Button start;
-    public Button multiplication;
+    public ToggleButton multiplication;
     public TextField answer;
     public Label questionLabel;
     public Label p1points;
@@ -32,15 +33,23 @@ public class HelloController {
     public Label inarow20;
     public Label all5;
     public Label alldone;
+    public Label all5p2;
+    public Label inarow10p2;
+    public Label inarow15p2;
+    public Label inarow20p2;
+    public Label alldonep2;
+    public Label hsp1;
+    public Label hsp2;
+    public ToggleButton negitive;
 
     private boolean singlePlayer = true;
     private int dificulty = 1;
-    private int operation = 1;
+    private String operation = "+";
     private Person p1;
     private Person p2;
     private int questionNum = 1;
     private Question currentQuestion;
-    private int numOfRounds = 10;
+    private int numOfRounds = 20;
 
     @FXML
     protected void onGameStart(){
@@ -61,7 +70,7 @@ public class HelloController {
             endGame();
             return;
         }
-        currentQuestion = new Question(operation, dificulty);
+        currentQuestion = new Question(operation, dificulty, negitive.isSelected());
         Person currentPlayer = p1;
         if(!singlePlayer){
             if(questionNum%2==0){
@@ -77,15 +86,27 @@ public class HelloController {
             if(!singlePlayer){
                 if(questionNum%2==0){
                     p2.modifyScore(1);
+                    p2.incrementStreak();
                 }else {
                     p1.modifyScore(1);
+                    p1.incrementStreak();
                 }
             }else {
                 p1.modifyScore(1);
+                p1.incrementStreak();
             }
             updateScores();
             toast.setText("Correct!");
         }else{
+            if(!singlePlayer){
+                if(questionNum%2==0){
+                    p2.resetStreak();
+                }else {
+                    p1.resetStreak();
+                }
+            }else {
+                p1.resetStreak();
+            }
             toast.setText("Incorrect! The anwser was " + currentQuestion.getAnswer() + ".");
         }
         questionNum++;
@@ -93,6 +114,8 @@ public class HelloController {
     }
 
     protected void updateScores(){
+        updateHighScores();
+        checkForBadges();
         if(!singlePlayer){
             p2points.setText(p2.getName()+"'s Score: "+Integer.toString(p2.getScore()));
         }else{
@@ -124,15 +147,15 @@ public class HelloController {
 
     @FXML
     private void updateOperation(ActionEvent ae){
-        Button pushed = (Button) ae.getSource();
-        if(pushed.equals(plus)){
-            operation = 1;
-            plus.setDisable(true);
-            minus.setDisable(false);
-        }else if(pushed.equals(minus)){
-            operation = 2;
-            plus.setDisable(false);
-            minus.setDisable(true);
+        operation = "";
+        if(plus.isSelected()){
+            operation += "+";
+        }else if(minus.isSelected()){
+            operation += "-";
+        }else if(multiplication.isSelected()){
+            operation += "*";
+        }else if(division.isSelected()) {
+            operation += "/";
         }
     }
 
@@ -180,39 +203,66 @@ public class HelloController {
         unlockAll();
     }
 
-    protected void checkForBadges(Person p){
-        for(int i = 0; i<2;i++){
+    protected void checkForBadges(){
+        Person p = p1;
+        for(int i = 10; i<30;i+=10){
             if(p.getStreak() >= 20) {
-                giveBadge(3);
+                giveBadge(3 + i);
             }
             if(p.getStreak() >= 15) {
-                giveBadge(2);
+                giveBadge(2+i);
             }
-            if(p.getStreak() >= 5){
-                giveBadge(1);
+            if(p.getStreak() >= 10){
+                giveBadge(1+i);
             }
             if(p.getAdditionQuestionsCorrect() >= 5 && p.getMultiplicationQuestionsCorrect() >= 5 && p.getSubtractionQuestionsCorrect() >= 5 && p.getDivisonQuestionsCorrect() >= 5){
-                giveBadge(4);
+                giveBadge(4+i);
             }
             if(p.getScore() == numOfRounds){
-                giveBadge(5);
+                giveBadge(5+i);
             }
-
+            p = p2;
         }
+
+    }
+
+    protected void updateHighScores(){
+        hsp1.setText(Integer.toString(p1.getHighScore()));
+        hsp2.setText(Integer.toString(p2.getHighScore()));
 
     }
     protected void giveBadge(int badgeId){
         switch (badgeId){
-            case 1:
+            case 11:
                 inarow10.setVisible(true);
-            case 2:
+                break;
+            case 12:
                 inarow15.setVisible(true);
-            case 3:
+                break;
+            case 13:
                 inarow20.setVisible(true);
-            case 4:
+                break;
+            case 14:
                 all5.setVisible(true);
-            case 5:
+                break;
+            case 15:
                 alldone.setVisible(true);
+                break;
+            case 21:
+                inarow10p2.setVisible(true);
+                break;
+            case 22:
+                inarow15p2.setVisible(true);
+                break;
+            case 23:
+                inarow20p2.setVisible(true);
+                break;
+            case 24:
+                all5p2.setVisible(true);
+                break;
+            case 25:
+                alldonep2.setVisible(true);
+                break;
         }
     }
 }
