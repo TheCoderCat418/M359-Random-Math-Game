@@ -2,6 +2,7 @@ package com.example.a5min;
 
 public class Question {
     private String operation;
+    private char setOperation;
     private String randomNumbers;
     private int answer;
 
@@ -39,12 +40,16 @@ public class Question {
         int op = operation.length();
         op = (int)(Math.random() * op)+1;
         if(op == 1){
+            setOperation = operation.charAt(0);
             return eval(num1, num2, operation.charAt(0));
         }else if(op == 2){
+            setOperation = operation.charAt(1);
             return eval(num1, num2, operation.charAt(1));
         }else if(op == 3){
+            setOperation = operation.charAt(2);
             return eval(num1, num2, operation.charAt(2));
         }else if(op == 4){
+            setOperation = operation.charAt(3);
             return eval(num1, num2, operation.charAt(3));
         }
         throw new RuntimeException("Invalid Operation");
@@ -52,7 +57,7 @@ public class Question {
 
     private int eval(int num1, int num2, char operaton){
         if(operaton == '+'){
-            return num1 = num2;
+            return num1 + num2;
         }else if(operaton == '-'){
             return num1 - num2;
         }else if(operaton == '*'){
@@ -74,7 +79,7 @@ public class Question {
         return playerAnwser == answer;
     }
 
-    public int getOperation() {
+    public String getOperation() {
         return operation;
     }
 
@@ -89,8 +94,14 @@ public class Question {
     public String questionString(){
         String[] rns = randomNumbers.split(",");
         String op = " ERROR ";
-        if(operation == 1){
-            op=" + ";
+        if(setOperation == '+'){
+            op = " + ";
+        }else if(setOperation == '-'){
+            op = " - ";
+        }else if(setOperation == '*'){
+            op = " * ";
+        }else if(setOperation == '/'){
+            op = " / ";
         }
         return rns[0]+op+rns[1];
     }
