@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 
+
 public class HelloController {
 
     public TextField name1;
@@ -153,13 +154,16 @@ public class HelloController {
     @FXML
     private void updateOperation(ActionEvent ae){
         operation = "";
-        if(plus.isSelected()){
+        if(plus.isSelected()) {
             operation += "+";
-        }else if(minus.isSelected()){
+        }
+        if(minus.isSelected()) {
             operation += "-";
-        }else if(multiplication.isSelected()){
+        }
+        if(multiplication.isSelected()) {
             operation += "*";
-        }else if(division.isSelected()) {
+        }
+        if(division.isSelected()) {
             operation += "/";
         }
     }
