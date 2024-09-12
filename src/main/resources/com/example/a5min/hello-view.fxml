@@ -6,7 +6,7 @@
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.a5min.HelloController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.a5min.HelloController">
    <children>
       <TextField fx:id="name1" layoutX="9.0" layoutY="10.0" prefHeight="25.0" prefWidth="100.0" promptText="Player 1 Name" />
       <TextField fx:id="name2" layoutX="10.0" layoutY="40.0" prefHeight="25.0" prefWidth="100.0" promptText="Player 2 Name" />
@@ -15,10 +15,7 @@
       <Button fx:id="d2" layoutX="309.0" layoutY="26.0" mnemonicParsing="false" onAction="#updateDificulty" prefHeight="25.0" prefWidth="23.0" text="2" />
       <Button fx:id="d3" layoutX="332.0" layoutY="26.0" mnemonicParsing="false" onAction="#updateDificulty" prefHeight="25.0" prefWidth="23.0" text="3" />
       <Label layoutX="298.0" layoutY="5.0" text="Dificulty:" />
-      <TextField fx:id="range1" layoutX="364.0" layoutY="9.0" prefHeight="25.0" prefWidth="100.0" promptText="Number range" />
-      <TextField fx:id="range2" layoutX="486.0" layoutY="9.0" prefHeight="25.0" prefWidth="100.0" promptText="Number range" />
-      <Label layoutX="469.0" layoutY="13.0" text="to" />
-      <Button fx:id="start" layoutX="486.0" layoutY="40.0" mnemonicParsing="false" onAction="#onGameStart" prefHeight="25.0" prefWidth="100.0" text="Start" />
+      <Button fx:id="start" layoutX="486.0" layoutY="27.0" mnemonicParsing="false" onAction="#onGameStart" prefHeight="25.0" prefWidth="100.0" text="Start" />
       <TextField fx:id="answer" layoutX="403.0" layoutY="188.0" prefHeight="25.0" prefWidth="100.0" promptText="Answer Here" />
       <Label fx:id="questionLabel" alignment="CENTER_RIGHT" layoutX="125.0" layoutY="192.0" prefHeight="17.0" prefWidth="262.0" text="Label" />
       <Button fx:id="submit" layoutX="510.0" layoutY="188.0" mnemonicParsing="false" onAction="#handleAnwser" text="Submit" />
@@ -37,10 +34,10 @@
       <Label fx:id="alldonep2" layoutX="490.0" layoutY="142.0" text="A+!!!" visible="false" />
       <Label fx:id="hsp1" layoutX="32.0" layoutY="134.0" text="Label" />
       <Label fx:id="hsp2" layoutX="32.0" layoutY="213.0" text="Label" />
-      <ToggleButton fx:id="plus" ellipsisString="+" layoutX="364.0" layoutY="40.0" mnemonicParsing="false" onAction="#updateOperation" prefHeight="25.0" prefWidth="5.0" text="+" />
-      <ToggleButton fx:id="minus" ellipsisString="-" layoutX="391.0" layoutY="40.0" mnemonicParsing="false" onAction="#updateOperation" prefHeight="25.0" prefWidth="5.0" text="-" />
-      <ToggleButton fx:id="multiplication" ellipsisString="*" layoutX="416.0" layoutY="40.0" mnemonicParsing="false" onAction="#updateOperation" prefHeight="25.0" prefWidth="5.0" text="*" />
-      <ToggleButton fx:id="division" ellipsisString="/" layoutX="443.0" layoutY="40.0" mnemonicParsing="false" onAction="#updateOperation" prefHeight="25.0" prefWidth="5.0" text="/" />
+      <ToggleButton fx:id="plus" ellipsisString="+" layoutX="364.0" layoutY="27.0" mnemonicParsing="false" onAction="#updateOperation" prefHeight="25.0" prefWidth="5.0" text="+" />
+      <ToggleButton fx:id="minus" ellipsisString="-" layoutX="391.0" layoutY="27.0" mnemonicParsing="false" onAction="#updateOperation" prefHeight="25.0" prefWidth="5.0" text="-" />
+      <ToggleButton fx:id="multiplication" ellipsisString="*" layoutX="416.0" layoutY="27.0" mnemonicParsing="false" onAction="#updateOperation" prefHeight="25.0" prefWidth="5.0" text="*" />
+      <ToggleButton fx:id="division" ellipsisString="/" layoutX="443.0" layoutY="27.0" mnemonicParsing="false" onAction="#updateOperation" prefHeight="25.0" prefWidth="5.0" text="/" />
       <ToggleButton fx:id="negitive" layoutX="141.0" layoutY="40.0" mnemonicParsing="false" text="Negitive numbers?" />
    </children>
 </AnchorPane>

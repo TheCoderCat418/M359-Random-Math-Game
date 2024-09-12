@@ -47,23 +47,9 @@ public class Question {
             setOperation = operation.charAt(1);
             return eval(num1, num2, operation.charAt(1));
         }else if(op == 3){
-            int rn = 1;
-            if(negitive){
-                rn = -9;
-            }
-            rns = assembleRandomNumbers(20, rn).split(",");
-            num1 = Integer.parseInt(rns[0]);
-            num2 = Integer.parseInt(rns[1]);
             setOperation = operation.charAt(2);
             return eval(num1, num2, operation.charAt(2));
         }else if(op == 4){
-            int rn = 1;
-            if(negitive){
-                rn = -50;
-            }
-            rns = assembleRandomNumbers(50, rn).split(",");
-            num1 = Integer.parseInt(rns[0]);
-            num2 = Integer.parseInt(rns[1]);
             setOperation = operation.charAt(3);
             return eval(num1, num2, operation.charAt(3));
         }

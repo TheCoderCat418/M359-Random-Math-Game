@@ -16,8 +16,6 @@ public class HelloController {
     public Button d1;
     public Button d2;
     public Button d3;
-    public TextField range1;
-    public TextField range2;
     public ToggleButton plus;
     public ToggleButton minus;
     public ToggleButton division;
@@ -77,6 +75,7 @@ public class HelloController {
             return;
         }
         currentQuestion = new Question(operation, dificulty, negitive.isSelected());
+        System.out.println(currentQuestion.getAnswer());
         Person currentPlayer = p1;
         if(!singlePlayer){
             if(questionNum%2==0){
@@ -179,8 +178,6 @@ public class HelloController {
         minus.setDisable(true);
         multiplication.setDisable(true);
         division.setDisable(true);
-        range1.setDisable(true);
-        range2.setDisable(true);
         start.setDisable(true);
         submit.setDisable(false);
     }
@@ -196,8 +193,6 @@ public class HelloController {
         minus.setDisable(false);
         multiplication.setDisable(false);
         division.setDisable(false);
-        range1.setDisable(false);
-        range2.setDisable(false);
         start.setDisable(false);
         submit.setDisable(true);
     }
